@@ -10,7 +10,9 @@ export type AnimalModel = {
   sex: string,
   weight: string | number,
   height: string | number,
-  age: string | number
+  age: string | number,
+  food?: string | number | any,
+  exam?: string | number | any
 }
 
 export type UserProps = {
@@ -30,4 +32,14 @@ export type ExamProps = {
   name: string;
   content: string;
   type: string;
+}
+
+export type VetProps = {
+  id: number;
+  name: string;
+  cpf: string | number;
+  crmvNumber: number;
+  address: string;
+  email: string;
+  telephone: number;
 }

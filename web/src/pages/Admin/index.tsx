@@ -6,7 +6,7 @@ import './styles.css';
 import { useState } from 'react';
 import { api } from '../../services/api';
 import { useEffect } from 'react';
-import { AnimalModel } from '../../globalType';
+import { AnimalModel, SelectOptions } from '../../globalType';
 // import { toastr } from 'react-redux-toastr'
 
 export default function Admin() {
@@ -36,7 +36,7 @@ export default function Admin() {
 
   //#region funcitions
   const handleEdit = (id: number) => {
-    // TODO
+    history(`/animal/editanimal/${id}`)
   }
 
   const handleDelete = async (id: number) => {
@@ -67,6 +67,7 @@ export default function Admin() {
         <Link className="button" to="/animal" style={{ marginLeft: "80px" }}>Cadastrar Animal</Link>
         <Link className="button" to="/food" style={{ marginLeft: "10px" }}>Cadastrar Refeição</Link>
         <Link className="button" to="/exam" style={{ marginLeft: "10px" }}>Cadastrar Exame</Link>
+        <Link className="button" to="/vet" style={{ marginLeft: "10px" }}>Cadastrar Vet</Link>
         <button onClick={handleLogout} type="button" id='cartButton' className='cartButton'>
           <FiPower size={18} color="#E02041" />
         </button>
@@ -86,27 +87,43 @@ export default function Admin() {
 
       <ul>
         {filter.length > 0 && (
-          filter.map(animal => (
-            <li key={animal.id}>
-              <strong>Informações:</strong>
-              <p>{animal.name + ", " + animal.age + " anos, " + animal.sex}</p>
-              <br />
-              <p>{animal.weight + "cm, " + animal.height + "kg"}</p>
-              <br />
-              <p>Nº de Identificação: <b>{animal.id}</b></p>
+          filter.map(animal => {
+            return (
+              <li key={animal.id}>
+                <strong>Informações:</strong>
+                <p>{animal.name + ", " + animal.age + " anos, " + animal.sex}</p>
+                <br />
+                <p>{animal.weight + "cm, " + animal.height + "kg"}</p>
+                <br />
+                <p>Nº de Identificação: <b>{animal.id}</b></p>
 
-              <strong>Raça:</strong>
-              <p>{animal.breed}</p>
+                <strong>Raça:</strong>
+                <p>{animal.breed}</p>
 
-              <button onClick={e => handleEdit(animal.id)} className="editButton">
-                <FiEdit size={20} color="#a8a8b3" />
-              </button>
-              <button onClick={e => handleDelete(animal.id)}>
-                <FiTrash2 size={20} color="#a8a8b3" />
-              </button>
-            </li>
+                {
+                  animal.exam != "" && <>
+                    <strong>Informações de Exames:</strong>
+                    <p>Exames: + </p>
+                  </>
+                }
+                 {
+                  animal.food != "" && <>
+                    <strong>Informações de Refeições:</strong>
+                    <p>Refeições: + </p>
+                  </>
+                }
+
+                <button onClick={e => handleEdit(animal.id)} className="editButton">
+                  <FiEdit size={20} color="#a8a8b3" />
+                </button>
+                <button onClick={e => handleDelete(animal.id)}>
+                  <FiTrash2 size={20} color="#a8a8b3" />
+                </button>
+              </li>
+            )
+          }
           ))
-        )}
+        }
       </ul>
     </div>
   );

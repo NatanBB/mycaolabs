@@ -29,7 +29,10 @@ export default function Animal() {
       sex: sex.label,
       weight: weight,
       height: height,
-      age: age
+      age: age,
+      exam: "",
+      food: "",
+
     }
     api.post('animal', preparedData)
   }
