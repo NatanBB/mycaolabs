@@ -63,7 +63,7 @@ export default function Login() {
             </button>
         </form>
       </section>
-      <img src={"https://i.imgur.com/89daQSM.png"} alt="Library" />
+      <img src={"https://i.imgur.com/89daQSM.png"} alt="Dog" />
     </div>
   )
 }
