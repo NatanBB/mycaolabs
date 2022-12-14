@@ -92,6 +92,8 @@ export default function Admin() {
               <p>{animal.name + ", " + animal.age + " anos, " + animal.sex}</p>
               <br />
               <p>{animal.weight + "cm, " + animal.height + "kg"}</p>
+              <br />
+              <p>Nº de Identicação: <b>{animal.id}</b></p>
 
               <strong>Raça:</strong>
               <p>{animal.breed}</p>
