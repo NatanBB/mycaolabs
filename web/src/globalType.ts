@@ -12,3 +12,22 @@ export type AnimalModel = {
   height: string | number,
   age: string | number
 }
+
+export type UserProps = {
+  id: number;
+  username: string;
+}
+
+export type FoodProps = {
+  id: number;
+  name: string;
+  content: string;
+  type: string;
+}
+
+export type ExamProps = {
+  id: number;
+  name: string;
+  content: string;
+  type: string;
+}

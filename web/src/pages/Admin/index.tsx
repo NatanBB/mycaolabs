@@ -66,7 +66,7 @@ export default function Admin() {
 
         <Link className="button" to="/animal" style={{ marginLeft: "80px" }}>Cadastrar Animal</Link>
         <Link className="button" to="/food" style={{ marginLeft: "10px" }}>Cadastrar Refeição</Link>
-        <Link className="button" to="/exame" style={{ marginLeft: "10px" }}>Cadastrar Exame</Link>
+        <Link className="button" to="/exam" style={{ marginLeft: "10px" }}>Cadastrar Exame</Link>
         <button onClick={handleLogout} type="button" id='cartButton' className='cartButton'>
           <FiPower size={18} color="#E02041" />
         </button>

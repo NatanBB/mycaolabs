@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FiArrowLeft } from 'react-icons/fi'
 import Select from 'react-select';
@@ -7,6 +7,7 @@ import './styles.css';
 import { api } from '../../services/api';
 import { breedOptions } from '../../utils/options'
 import { sexOptions } from '../../utils/options'
+import { AnimalModel } from '../../globalType';
 
 
 export default function Animal() {
@@ -21,7 +22,7 @@ export default function Animal() {
   const id = Math.floor(Math.random() * 65536);
 
   const handleSubmit = async () => {
-    const preparedData = {
+    const preparedData: AnimalModel = {
       id: id,
       name: name,
       breed: breed.label,

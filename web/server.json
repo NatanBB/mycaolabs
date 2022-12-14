@@ -24,5 +24,21 @@
       "height": "50",
       "age": "80"
     }
+  ],
+  "exam": [
+    {
+      "id": 31168,
+      "name": "Exame de rotina",
+      "content": "Exame de sangue de rotina",
+      "type": "Exame de sangue"
+    }
+  ],
+  "food": [
+    {
+      "id": 22385,
+      "name": "Almoço",
+      "content": "Arroz e feijão",
+      "type": "Refeição Completa"
+    }
   ]
 }
