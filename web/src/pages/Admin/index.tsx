@@ -93,7 +93,7 @@ export default function Admin() {
               <br />
               <p>{animal.weight + "cm, " + animal.height + "kg"}</p>
               <br />
-              <p>Nº de Identicação: <b>{animal.id}</b></p>
+              <p>Nº de Identificação: <b>{animal.id}</b></p>
 
               <strong>Raça:</strong>
               <p>{animal.breed}</p>
