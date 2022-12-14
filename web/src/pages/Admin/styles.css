@@ -89,3 +89,15 @@
   width: 200px;
   height: 230px;
 }
+
+.editButton {
+  background: #FFF;
+  position: absolute;
+  right: 58px !important;
+  top: 24px !important;
+  border: 0px;
+}
+
+.editButtonul li button:hover {
+  opacity: 0.8;
+}

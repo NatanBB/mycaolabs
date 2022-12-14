@@ -1,17 +1,18 @@
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { FiPower, FiTrash2 } from 'react-icons/fi';
+import { FiEdit, FiPower, FiTrash2 } from 'react-icons/fi';
 
 import './styles.css';
 import { useState } from 'react';
 import { api } from '../../services/api';
 import { useEffect } from 'react';
+import { AnimalModel } from '../../globalType';
 // import { toastr } from 'react-redux-toastr'
 
 export default function Admin() {
 
   //#region data
-  const [data, setData] = useState([]);
+  const [data, setData] = useState<AnimalModel[]>([]);
   const [searchValue, setSearchValue] = useState('');
 
   useEffect(() => {
@@ -19,7 +20,7 @@ export default function Admin() {
   }, [])
 
   const handleData = async () => {
-    const { data } = await api.get('books');
+    const { data } = await api.get('animal');
     setData(data);
   }
 
@@ -34,8 +35,12 @@ export default function Admin() {
   //#endregion
 
   //#region funcitions
+  const handleEdit = (id: number) => {
+    // TODO
+  }
+
   const handleDelete = async (id: number) => {
-    await api.delete(`books/${id}`)
+    await api.delete(`animal/${id}`)
     handleData();
   }
 
@@ -44,13 +49,13 @@ export default function Admin() {
     setSearchValue(value);
   }
 
-  // const filter = !!searchValue ?
-  //   data.filter(book => {
-  //     return book.category.toLowerCase().includes(
-  //       searchValue.toLowerCase()
-  //     );
-  //   })
-  //   : data;
+  const filter = !!searchValue ?
+    data.filter(animal => {
+      return animal.name.toLowerCase().includes(
+        searchValue.toLowerCase()
+      );
+    })
+    : data;
   //#endregion
 
   return (
@@ -80,27 +85,26 @@ export default function Admin() {
       </div>
 
       <ul>
-        {/* {filter.length > 0 && (
-          filter.map(book => (
-            <li key={book}>
-              <strong>LIVRO:</strong>
-              <p>{book}</p>
+        {filter.length > 0 && (
+          filter.map(animal => (
+            <li key={animal.id}>
+              <strong>Informações:</strong>
+              <p>{animal.name + ", " + animal.age + " anos, " + animal.sex}</p>
+              <br />
+              <p>{animal.weight + "cm, " + animal.height + "kg"}</p>
 
-              <strong>DESCRIÇÃO:</strong>
-              <p>{book}</p>
+              <strong>Raça:</strong>
+              <p>{animal.breed}</p>
 
-              <strong>CATEGORIA:</strong>
-              <p>{book.category}</p>
-
-              <strong>VALOR:</strong>
-              <p>{Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(book.price)}</p>
-
-              <button onClick={e => handleDelete(book.id)}>
+              <button onClick={e => handleEdit(animal.id)} className="editButton">
+                <FiEdit size={20} color="#a8a8b3" />
+              </button>
+              <button onClick={e => handleDelete(animal.id)}>
                 <FiTrash2 size={20} color="#a8a8b3" />
               </button>
             </li>
           ))
-        )} */}
+        )}
       </ul>
     </div>
   );

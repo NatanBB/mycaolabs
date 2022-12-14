@@ -5,45 +5,33 @@ import Select from 'react-select';
 
 import './styles.css';
 import { api } from '../../services/api';
+import { breedOptions } from '../../utils/options'
+import { sexOptions } from '../../utils/options'
+
 
 export default function Animal() {
-  const [title, setTitle] = useState<any>();
-  const [description, setDescription] = useState<any>();
-  const [value, setValue] = useState<any>();
-  const [category, setCategory] = useState<any>();
-  const [data, setData] = useState<[]>([]);
+  const [name, setName] = useState<any>();
+  const [breed, setBreed] = useState<any>();
+  const [age, setAge] = useState<any>();
+  const [sex, setSex] = useState<any>();
+  const [weight, setWeight] = useState<any>();
+  const [height, setHeight] = useState<any>();
+
 
   const id = Math.floor(Math.random() * 65536);
 
   const handleSubmit = async () => {
     const preparedData = {
       id: id,
-      name: title,
-      breed: description,
-      sex: value,
-      weight: category.label,
-      height: category.label,
-      age: category.label // change future
+      name: name,
+      breed: breed.label,
+      sex: sex.label,
+      weight: weight,
+      height: height,
+      age: age
     }
     api.post('animal', preparedData)
   }
-
-  const handleData = async () => {
-    const { data } = await api.get('category');
-    setData(data);
-  }
-
-  useEffect(() => {
-    handleData();
-  }, [])
-
-  const options: any = [];
-  // data.forEach(category => {
-  //   options.push({
-  //     value: category.id, 
-  //     label: category.name
-  //   })
-  // })
 
   return (
     <div className="new-incident-container">
@@ -61,58 +49,65 @@ export default function Animal() {
 
         </section>
         <form onSubmit={e => e}>
-          <input
-            placeholder="Nome do Animal"
-            value={title}
-            onChange={e => setTitle(e.target.value)}
-            maxLength={30}
-          />
-          <input
-            placeholder="Raça"
-            value={description}
-            onChange={e => setDescription(e.target.value)}
-          />
-
           <ul>
             <li>
               <input
-                placeholder="Idade"
-                value={value}
-                onChange={e => setValue(e.target.value)}
-                maxLength={2}
+                placeholder="Nome do Animal"
+                value={name}
+                onChange={e => setName(e.target.value)}
+                maxLength={30}
               />
             </li>
             <li>
               <input
-                placeholder="Sexo"
-                value={value}
-                onChange={e => setValue(e.target.value)}
+                placeholder="Idade"
+                value={age}
+                onChange={e => setAge(e.target.value)}
+                maxLength={2}
               />
             </li>
+
           </ul>
           <ul>
             <li>
               <input
                 placeholder="Peso"
-                value={value}
-                onChange={e => setValue(e.target.value)}
+                value={weight}
+                onChange={e => setWeight(e.target.value)}
                 maxLength={10}
               />
             </li>
             <li>
               <input
                 placeholder="Altura"
-                value={value}
-                onChange={e => setValue(e.target.value)}
+                value={height}
+                onChange={e => setHeight(e.target.value)}
                 maxLength={10}
               />
             </li>
           </ul>
-
-          {/* <div style={{paddingTop: "8px"}}>
-            <Select options={options} onChange={e => setCategory(e)} placeholder={"Categoria"} isClearable={true}/>
-          </div> */}
-
+          <ul>
+            <li>
+              <Select
+                options={breedOptions}
+                onChange={e => setBreed(e)}
+                placeholder={"Raça"}
+                isClearable
+                isSearchable
+                className="selectOptions"
+              />
+            </li>
+            <li>
+              <Select
+                options={sexOptions}
+                onChange={e => setSex(e)}
+                placeholder={"Sexo"}
+                isClearable
+                isSearchable
+                className="selectOptions"
+              />
+            </li>
+          </ul>
           <button className="button" onClick={handleSubmit}>Cadastrar</button>
         </form>
       </div>

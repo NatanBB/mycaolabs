@@ -6,6 +6,23 @@
     }
   ],
   "animal": [
-    
+    {
+      "id": 6990,
+      "name": "Maycao",
+      "breed": "Vira-lata",
+      "sex": "Masculino",
+      "weight": "50",
+      "height": "30",
+      "age": "20"
+    },
+    {
+      "id": 60617,
+      "name": "Fumaça",
+      "breed": "Vira-lata",
+      "sex": "Masculino",
+      "weight": "20",
+      "height": "50",
+      "age": "80"
+    }
   ]
 }
