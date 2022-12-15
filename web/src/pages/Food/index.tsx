@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FiArrowLeft } from 'react-icons/fi'
 import Select from 'react-select';
@@ -6,12 +6,28 @@ import Select from 'react-select';
 import './styles.css';
 import { api } from '../../services/api';
 import { typeFood } from '../../utils/options'
-import { FoodProps } from '../../globalType';
+import { FoodProps, UserProps } from '../../globalType';
 
 export default function Food() {
   const [name, setName] = useState<any>();
   const [type, setType] = useState<any>();
   const [content, setContent] = useState<any>();
+
+  const [user, setUser] = useState<UserProps[]>([]);
+
+  const log: string[] = [];
+  user.forEach(item => {
+    log.push(item.username)
+  })
+
+  const handleUserData = async () => {
+    const { data: newData } = await api.get('userLog');
+    setUser(newData);
+  }
+
+  useEffect(() => {
+    handleUserData()
+  }, [])
 
   const id = Math.floor(Math.random() * 65536);
 
@@ -24,6 +40,7 @@ export default function Food() {
     }
     api.post('food', preparedData)
   }
+  
 
   return (
     <div className="new-incident-container">
@@ -34,10 +51,17 @@ export default function Food() {
           <h1>Cadastrar nova refeição</h1>
           <p>Preencha todas as informações para cadastrar uma nova refeição!</p>
 
-          <Link className="back-link" to="/admin">
-            <FiArrowLeft size={16} color="#E02041" />
-            Voltar
-          </Link>
+          {log[0] === 'admin' ? <div>
+            <Link className="back-link" to="/admin">
+              <FiArrowLeft size={16} color="#E02041" />
+              Voltar
+            </Link>
+          </div> : <div>
+            <Link className="back-link" to="/vethome">
+              <FiArrowLeft size={16} color="#E02041" />
+              Voltar
+            </Link>
+          </div>}
 
         </section>
         <form onSubmit={e => e}>

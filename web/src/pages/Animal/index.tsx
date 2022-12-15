@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FiArrowLeft } from 'react-icons/fi'
 import Select from 'react-select';
@@ -7,7 +7,7 @@ import './styles.css';
 import { api } from '../../services/api';
 import { breedOptions } from '../../utils/options'
 import { sexOptions } from '../../utils/options'
-import { AnimalModel } from '../../globalType';
+import { AnimalModel, UserProps } from '../../globalType';
 
 
 export default function Animal() {
@@ -17,6 +17,22 @@ export default function Animal() {
   const [sex, setSex] = useState<any>();
   const [weight, setWeight] = useState<any>();
   const [height, setHeight] = useState<any>();
+
+  const [user, setUser] = useState<UserProps[]>([]);
+
+  const log: string[] = [];
+  user.forEach(item => {
+    log.push(item.username)
+  })
+
+  const handleUserData = async () => {
+    const { data: newData } = await api.get('userLog');
+    setUser(newData);
+  }
+
+  useEffect(() => {
+    handleUserData()
+  }, [])
 
 
   const id = Math.floor(Math.random() * 65536);
@@ -32,6 +48,7 @@ export default function Animal() {
       age: age,
       exam: "",
       food: "",
+      vaccine: ""
 
     }
     api.post('animal', preparedData)
@@ -46,10 +63,17 @@ export default function Animal() {
           <h1>Cadastrar novo animal</h1>
           <p>Preencha todas as informações para cadastrar um novo animal!</p>
 
-          <Link className="back-link" to="/admin">
-            <FiArrowLeft size={16} color="#E02041" />
-            Voltar
-          </Link>
+          {log[0] === 'admin' ? <div>
+            <Link className="back-link" to="/admin">
+              <FiArrowLeft size={16} color="#E02041" />
+              Voltar
+            </Link>
+          </div> : <div>
+            <Link className="back-link" to="/vethome">
+              <FiArrowLeft size={16} color="#E02041" />
+              Voltar
+            </Link>
+          </div>}
 
         </section>
         <form onSubmit={e => e}>

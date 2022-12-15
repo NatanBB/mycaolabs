@@ -7,7 +7,7 @@ import './styles.css';
 import { api } from '../../../services/api';
 import { breedOptions } from '../../../utils/options'
 import { sexOptions } from '../../../utils/options'
-import { AnimalModel, ExamProps, FoodProps, SelectOptions } from '../../../globalType';
+import { AnimalModel, ExamProps, FoodProps, SelectOptions, UserProps, VaccineProps } from '../../../globalType';
 
 export default function EditAnimal() {
   const [name, setName] = useState<any>();
@@ -18,8 +18,17 @@ export default function EditAnimal() {
   const [height, setHeight] = useState<any>();
   const [food, setFood] = useState<any>();
   const [exam, setExam] = useState<any>();
+  const [vaccine, setVaccine] = useState<any>();
   const [examOptions, setExamOptions] = useState<SelectOptions[]>([]);
   const [foodOptions, setFoodOptions] = useState<SelectOptions[]>([]);
+  const [vaccineOptions, setVaccineOptions] = useState<SelectOptions[]>([]);
+
+  const [user, setUser] = useState<UserProps[]>([]);
+
+  const log: string[] = [];
+  user.forEach(item => {
+    log.push(item.username)
+  })
 
   const { idAnimal } = useParams();
 
@@ -28,6 +37,8 @@ export default function EditAnimal() {
     handleData();
     handleExamData();
     handleFoodData();
+    handleViccineData();
+    handleUserData();
   }, [])
 
   const handleData = async () => {
@@ -40,6 +51,12 @@ export default function EditAnimal() {
     setHeight(data.height);
     setExam(data.exam);
     setFood(data.food)
+    setVaccine(data.vaccine);
+  }
+
+  const handleUserData = async () => {
+    const { data: newData } = await api.get('userLog');
+    setUser(newData);
   }
 
   const handleExamData = async () => {
@@ -54,7 +71,7 @@ export default function EditAnimal() {
   }
 
   const handleFoodData = async () => {
-    const { data = []} = await api.get(`food`);
+    const { data = [] } = await api.get(`food`);
     const options = data.map((food: FoodProps) => {
       return {
         value: food.id,
@@ -62,6 +79,17 @@ export default function EditAnimal() {
       };
     })
     setFoodOptions(options);
+  }
+
+  const handleViccineData = async () => {
+    const { data = [] } = await api.get(`vaccine`);
+    const options = data.map((vaccine: VaccineProps) => {
+      return {
+        value: vaccine.id,
+        label: vaccine.name,
+      };
+    })
+    setVaccineOptions(options);
   }
 
   //#endregion
@@ -76,7 +104,8 @@ export default function EditAnimal() {
       height: height,
       age: age,
       exam: exam,
-      food: food
+      food: food,
+      vaccine: vaccine
     }
     api.put(`animal/${idAnimal}`, preparedData)
   }
@@ -90,10 +119,17 @@ export default function EditAnimal() {
           <h1>Atualizar animal</h1>
           <p>Altere as informações e mantenha todas as informações do animal atualizadas!</p>
 
-          <Link className="back-link" to="/admin">
-            <FiArrowLeft size={16} color="#E02041" />
-            Voltar
-          </Link>
+          {log[0] === 'admin' ? <div>
+            <Link className="back-link" to="/admin">
+              <FiArrowLeft size={16} color="#E02041" />
+              Voltar
+            </Link>
+          </div> : <div>
+            <Link className="back-link" to="/vethome">
+              <FiArrowLeft size={16} color="#E02041" />
+              Voltar
+            </Link>
+          </div>}
 
         </section>
         <form onSubmit={e => e}>
@@ -192,6 +228,17 @@ export default function EditAnimal() {
               />
             </li>
           </ul>
+          <p>Vacinas</p>
+          <Select
+            options={vaccineOptions}
+            value={vaccine}
+            onChange={e => setVaccine(e)}
+            placeholder={"Vacinas"}
+            isMulti
+            isClearable
+            isSearchable
+            className="selectOptions"
+          />
           <button className="button" onClick={handleSubmit}>Atualizar</button>
         </form>
       </div>

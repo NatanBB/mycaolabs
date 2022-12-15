@@ -9,8 +9,8 @@ export default function Home() {
 
   //#region data
   const [data, setData] = useState<AnimalModel[]>([]);
-  const [user, setUser] = useState<UserProps[]>([]);
   const [searchValue, setSearchValue] = useState('');
+  const [user, setUser] = useState<UserProps[]>([]);
 
   const log: string[] = [];
   user.forEach(item => {
@@ -103,6 +103,43 @@ export default function Home() {
 
               <strong>Raça:</strong>
               <p>{animal.breed}</p>
+
+              {
+                animal.exam != "" && <>
+                  <strong>Informações de Exames:</strong>
+                  <p>{
+                    animal.exam.map((e: any) => {
+                      return (
+                        <p key={e.value}>{e.label}</p>
+                      )
+                    })
+                  }</p>
+                </>
+              }
+              {
+                animal.food != "" && <>
+                  <strong>Informações de Refeições:</strong>
+                  <p>{
+                    animal.food.map((e: any) => {
+                      return (
+                        <p key={e.value}>{e.label}</p>
+                      )
+                    })
+                  }</p>
+                </>
+              }
+              {
+                animal.vaccine != "" && <>
+                  <strong>Informações de Vacina:</strong>
+                  <p>{
+                    animal.vaccine.map((e: any) => {
+                      return (
+                        <p key={e.value}>{e.label}</p>
+                      )
+                    })
+                  }</p>
+                </>
+              }
             </li>
           ))
         )}

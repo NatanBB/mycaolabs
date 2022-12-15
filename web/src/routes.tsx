@@ -6,7 +6,9 @@ import Exam from './pages/Exam';
 import Food from './pages/Food';
 import Home from './pages/Home';
 import Login from './pages/Login';
+import Vaccine from './pages/Vaccine';
 import Vet from './pages/Vet';
+import VetHome from './pages/VetHome';
 
 export default function RoutesApp() {
   return (
@@ -21,6 +23,8 @@ export default function RoutesApp() {
         <Route path="/exam" element={<Exam />} />
         <Route path="/vet" element={<Vet />} />
         <Route path="/animal/editanimal/:idAnimal" element={<EditAnimal />} />
+        <Route path="/vaccine" element={<Vaccine />} />
+        <Route path="/vethome" element={<VetHome />} />
       </Routes>
     </BrowserRouter>
   )

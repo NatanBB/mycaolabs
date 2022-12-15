@@ -22,7 +22,7 @@ export default function Login() {
   }
 
   const handleLogin = () => {
-    values.user === 'admin' ? history('/admin') : history('home');
+    values.user === 'admin' ? history('/admin') : values.user === 'vet' ? history('vethome') :  history('home');
 
     const preparedData = {
       username: values.user,

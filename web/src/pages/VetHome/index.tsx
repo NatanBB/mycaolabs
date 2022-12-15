@@ -8,7 +8,7 @@ import { useEffect } from 'react';
 import { AnimalModel } from '../../globalType';
 // import { toastr } from 'react-redux-toastr'
 
-export default function Admin() {
+export default function VetHome() {
 
   //#region data
   const [data, setData] = useState<AnimalModel[]>([]);
@@ -61,14 +61,12 @@ export default function Admin() {
     <div className="profile-container">
       <header>
         <img src={"https://i.imgur.com/0lIghGx.png"} alt="livrary" className="icon" />
-        <span>Bem vindo, Admin!</span>
+        <span>Bem vindo, Veterinário!</span>
 
-        <Link className="button" to="/home" style={{ marginLeft: "30px" }}>Home</Link>
         <Link className="button" to="/animal" style={{ marginLeft: "10px" }}>Animal</Link>
         <Link className="button" to="/food" style={{ marginLeft: "10px" }}>Refeição</Link>
         <Link className="button" to="/exam" style={{ marginLeft: "10px" }}>Exame</Link>
         <Link className="button" to="/vaccine" style={{ marginLeft: "10px" }}>Vacina</Link>
-        <Link className="button" to="/vet" style={{ marginLeft: "10px" }}>Vet</Link>
         <button onClick={handleLogout} type="button" id='cartButton' className='cartButton'>
           <FiPower size={18} color="#E02041" />
         </button>

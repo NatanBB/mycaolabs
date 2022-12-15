@@ -12,7 +12,8 @@ export type AnimalModel = {
   height: string | number,
   age: string | number,
   food?: string | number | any,
-  exam?: string | number | any
+  exam?: string | number | any,
+  vaccine?: string | number | any
 }
 
 export type UserProps = {
@@ -32,6 +33,11 @@ export type ExamProps = {
   name: string;
   content: string;
   type: string;
+}
+
+export type VaccineProps = {
+  id: number;
+  name: string;
 }
 
 export type VetProps = {

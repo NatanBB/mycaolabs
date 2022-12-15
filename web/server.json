@@ -2,17 +2,17 @@
   "userLog": [
     {
       "id": 1,
-      "username": "admin"
+      "username": "natan"
     }
   ],
   "animal": [
     {
-      "id": 37865,
+      "id": 49665,
       "name": "Maycao",
       "breed": "Vira-lata",
       "sex": "Masculino",
       "weight": "30",
-      "height": "50",
+      "height": "30",
       "age": "20",
       "exam": [
         {
@@ -24,19 +24,49 @@
         {
           "value": 22385,
           "label": "Almoço"
+        },
+        {
+          "value": 8175,
+          "label": "Janta"
+        }
+      ],
+      "vaccine": [
+        {
+          "value": 55667,
+          "label": "Vacina da gripe"
         }
       ]
     },
     {
-      "id": 25833,
+      "id": 5234,
       "name": "Fumaça",
       "breed": "Vira-lata",
       "sex": "Masculino",
-      "weight": "50",
-      "height": "20",
+      "weight": "20",
+      "height": "40",
       "age": "80",
-      "exam": "",
-      "food": ""
+      "exam": [
+        {
+          "value": 31168,
+          "label": "Exame de rotina"
+        }
+      ],
+      "food": [
+        {
+          "value": 22385,
+          "label": "Almoço"
+        },
+        {
+          "value": 8175,
+          "label": "Janta"
+        }
+      ],
+      "vaccine": [
+        {
+          "value": 55667,
+          "label": "Vacina da gripe"
+        }
+      ]
     }
   ],
   "exam": [
@@ -61,5 +91,11 @@
       "type": "Carnes e ovos"
     }
   ],
-  "vet": []
+  "vet": [],
+  "vaccine": [
+    {
+      "id": 55667,
+      "name": "Vacina da gripe"
+    }
+  ]
 }
