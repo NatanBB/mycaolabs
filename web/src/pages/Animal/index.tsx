@@ -84,6 +84,7 @@ export default function Animal() {
                 value={name}
                 onChange={e => setName(e.target.value)}
                 maxLength={30}
+                required
               />
             </li>
             <li>
@@ -92,6 +93,7 @@ export default function Animal() {
                 value={age}
                 onChange={e => setAge(e.target.value)}
                 maxLength={2}
+                required
               />
             </li>
 
@@ -103,6 +105,7 @@ export default function Animal() {
                 value={weight}
                 onChange={e => setWeight(e.target.value)}
                 maxLength={10}
+                required
               />
             </li>
             <li>
@@ -111,6 +114,7 @@ export default function Animal() {
                 value={height}
                 onChange={e => setHeight(e.target.value)}
                 maxLength={10}
+                required
               />
             </li>
           </ul>
@@ -123,6 +127,7 @@ export default function Animal() {
                 isClearable
                 isSearchable
                 className="selectOptions"
+                required
               />
             </li>
             <li>
@@ -133,6 +138,7 @@ export default function Animal() {
                 isClearable
                 isSearchable
                 className="selectOptions"
+                required
               />
             </li>
           </ul>

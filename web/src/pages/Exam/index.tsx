@@ -69,11 +69,13 @@ export default function Exam() {
             value={name}
             onChange={e => setName(e.target.value)}
             maxLength={30}
+            required
           />
           <textarea
             placeholder="Descrição do Exame"
             value={content}
             onChange={e => setContent(e.target.value)}
+            required
           />
           <Select
             options={typeExam}
@@ -82,6 +84,7 @@ export default function Exam() {
             isClearable
             isSearchable
             className="selectOptions"
+            required
           />
           <button className="button" onClick={handleSubmit}>Cadastrar</button>
         </form>

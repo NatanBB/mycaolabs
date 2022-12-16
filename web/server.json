@@ -2,7 +2,7 @@
   "userLog": [
     {
       "id": 1,
-      "username": "natan"
+      "username": "admin"
     }
   ],
   "animal": [
@@ -96,6 +96,17 @@
     {
       "id": 55667,
       "name": "Vacina da gripe"
+    }
+  ],
+  "user": [],
+  "upload": [
+    {
+      "id": 41124,
+      "animal": "Maycao",
+      "idAnimal": 49665,
+      "img": {
+        "path": "319765018_843493546858045_5799310155111840322_n.jpg"
+      }
     }
   ]
 }

@@ -6,6 +6,8 @@ import Exam from './pages/Exam';
 import Food from './pages/Food';
 import Home from './pages/Home';
 import Login from './pages/Login';
+import Upload from './pages/Upload';
+import User from './pages/User';
 import Vaccine from './pages/Vaccine';
 import Vet from './pages/Vet';
 import VetHome from './pages/VetHome';
@@ -25,6 +27,8 @@ export default function RoutesApp() {
         <Route path="/animal/editanimal/:idAnimal" element={<EditAnimal />} />
         <Route path="/vaccine" element={<Vaccine />} />
         <Route path="/vethome" element={<VetHome />} />
+        <Route path="/user" element={<User />} />
+        <Route path="/upload" element={<Upload />} />
       </Routes>
     </BrowserRouter>
   )

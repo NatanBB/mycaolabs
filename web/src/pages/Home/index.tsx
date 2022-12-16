@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { FiFileText, FiPower } from 'react-icons/fi';
+import { FiFileText, FiPower, FiUpload } from 'react-icons/fi';
 import { api } from '../../services/api';
 import { AnimalModel, UserProps } from '../../globalType';
 import './styles.css'
@@ -36,6 +36,10 @@ export default function Home() {
   const adminPage = () => {
     history("/admin")
   }
+
+  const uploadImagePage = () => {
+    history("/upload")
+  }
   //#endregion
 
   //#region funcitions
@@ -59,7 +63,6 @@ export default function Home() {
 
   //#endregion
 
-
   return (
     <div className="profile-container">
 
@@ -71,6 +74,11 @@ export default function Home() {
         {log[0] === 'admin' ? <div>
           <button onClick={adminPage} type="button">
             <FiFileText size={18} color="black" />
+          </button>
+        </div> : <div></div>}
+        {log[0] != 'admin' && log[0] != 'vet' ? <div>
+          <button onClick={uploadImagePage} type="button">
+            <FiUpload size={18} color="black" />
           </button>
         </div> : <div></div>}
         <button onClick={handleLogout} type="button">

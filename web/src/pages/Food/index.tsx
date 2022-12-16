@@ -70,11 +70,13 @@ export default function Food() {
             value={name}
             onChange={e => setName(e.target.value)}
             maxLength={30}
+            required
           />
           <textarea
             placeholder="Conteúdo da refeição"
             value={content}
             onChange={e => setContent(e.target.value)}
+            required
           />
           <Select
             options={typeFood}
@@ -83,6 +85,7 @@ export default function Food() {
             isClearable
             isSearchable
             className="selectOptions"
+            required
           />
           <button className="button" onClick={handleSubmit}>Cadastrar</button>
         </form>

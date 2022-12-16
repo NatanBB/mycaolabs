@@ -49,3 +49,19 @@ export type VetProps = {
   email: string;
   telephone: number;
 }
+
+export type UserModelProps = {
+  id: number;
+  name: string;
+  cpf: string | number;
+  address: string;
+  email: string;
+  telephone: number;
+}
+
+export type UploadProps = {
+  id: number;
+  idAnimal: number;
+  animal: string;
+  img: any;
+}

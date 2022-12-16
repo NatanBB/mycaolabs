@@ -63,6 +63,7 @@ export default function Vaccine() {
             value={name}
             onChange={e => setName(e.target.value)}
             maxLength={30}
+            required
           />
           <button className="button" onClick={handleSubmit}>Cadastrar</button>
         </form>

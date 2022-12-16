@@ -1,42 +1,40 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { FiArrowLeft } from 'react-icons/fi'
+import { FiArrowLeft } from 'react-icons/fi';
 
 import './styles.css';
 import { api } from '../../services/api';
-import { VetProps } from '../../globalType';
+import { UserModelProps } from '../../globalType';
 
-export default function Vet() {
+export default function User() {
   const [name, setName] = useState<any>();
   const [cpf, setCpf] = useState<any>();
   const [address, setAddress] = useState<any>();
-  const [crmvNumber, setCrmvNumber] = useState<any>();
   const [email, setEmail] = useState<any>();
   const [telephone, setTelephone] = useState<any>();
 
   const id = Math.floor(Math.random() * 65536);
 
   const handleSubmit = async () => {
-    const preparedData: VetProps = {
+    const preparedData: UserModelProps = {
       id: id,
       name: name,
       cpf: cpf,
       address: address,
-      crmvNumber: crmvNumber,
       email: email,
       telephone: telephone
     }
-    api.post('vet', preparedData)
+    api.post('user', preparedData)
   }
 
   return (
     <div className="new-incident-container">
       <div className="content">
         <section>
-          <img src={"https://img.freepik.com/vetores-gratis/vendedor-de-pet-shop-que-vende-produtos-veterinarios-para-animais-mulher-em-pe-atras-do-balcao-dentro-da-loja-perto-de-acessorios-e-brinquedos-gaiola-e-comida-nas-prateleiras-ilustracao-vetorial-plana-conceito-de-pet-shop-de-pequeno-varejo_74855-21260.jpg?w=1380&t=st=1671054343~exp=1671054943~hmac=0238a90f6c9db11f147986201624e638aa00dfaee1c61e739ce10976f91e22c4"} alt="library" onClick={e => e} className={"registerIcon"} />
+          <img src={"https://img.freepik.com/vetores-gratis/usuarios-de-dispositivos-digitais-que-passam-algum-tempo-juntos_74855-5234.jpg?w=1800&t=st=1671146970~exp=1671147570~hmac=373126e78c2fa12435660ec144fd40ad8ae2460595bd6b26b2a20703d13c11f8"} alt="library" onClick={e => e} className={"registerIconUser"} />
 
-          <h1>Cadastrar novo veterinário</h1>
-          <p>Preencha todas as informações para cadastrar um novo veterinário!</p>
+          <h1>Cadastrar novo usuário</h1>
+          <p>Preencha todas as informações para cadastrar um novo usuário!</p>
 
           <Link className="back-link" to="/admin">
             <FiArrowLeft size={16} color="#E02041" />
@@ -65,14 +63,6 @@ export default function Vet() {
             value={cpf}
             onChange={e => setAddress(e.target.value)}
             maxLength={30}
-            required
-          />
-          <input
-            placeholder="Nº CRMV"
-            value={cpf}
-            onChange={e => setCrmvNumber(e.target.value)}
-            maxLength={30}
-            type={'number'}
             required
           />
           <input

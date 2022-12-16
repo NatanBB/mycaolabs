@@ -141,6 +141,7 @@ export default function EditAnimal() {
                 value={name}
                 onChange={e => setName(e.target.value)}
                 maxLength={30}
+                required
               />
             </li>
             <li>
@@ -150,6 +151,7 @@ export default function EditAnimal() {
                 value={age}
                 onChange={e => setAge(e.target.value)}
                 maxLength={2}
+                required
               />
             </li>
 
@@ -162,6 +164,7 @@ export default function EditAnimal() {
                 value={weight}
                 onChange={e => setWeight(e.target.value)}
                 maxLength={10}
+                required
               />
             </li>
             <li>
@@ -171,6 +174,7 @@ export default function EditAnimal() {
                 value={height}
                 onChange={e => setHeight(e.target.value)}
                 maxLength={10}
+                required
               />
             </li>
           </ul>
@@ -185,6 +189,7 @@ export default function EditAnimal() {
                 isClearable
                 isSearchable
                 className="selectOptions"
+                required
               />
             </li>
             <li>
@@ -197,6 +202,7 @@ export default function EditAnimal() {
                 isClearable
                 isSearchable
                 className="selectOptions"
+                required
               />
             </li>
           </ul>
