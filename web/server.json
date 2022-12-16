@@ -102,6 +102,18 @@
           "label": "Vacina da gripe"
         }
       ]
+    },
+    {
+      "id": 25139,
+      "name": "Peres",
+      "breed": "Vira-lata",
+      "sex": "Masculino",
+      "weight": 10,
+      "height": 20,
+      "age": 10,
+      "exam": "",
+      "food": "",
+      "vaccine": ""
     }
   ],
   "exam": [
@@ -116,6 +128,12 @@
       "name": "Exame periódico",
       "content": "Exame de sangue",
       "type": "Exame de sangue"
+    },
+    {
+      "id": 25139,
+      "name": "Exame de Teste",
+      "content": "Injeção",
+      "type": "Check-up"
     }
   ],
   "food": [
