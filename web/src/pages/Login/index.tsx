@@ -34,7 +34,7 @@ export default function Login() {
   return (
     <div className="logon-container">
       <section className="form">
-        <img src="https://i.imgur.com/0lIghGx.png" alt="icon" className="iconLogin" />
+        {/* <img src="https://i.imgur.com/0lIghGx.png" alt="icon" className="iconLogin" /> */}
         <form onSubmit={e => e}>
           <h1>Faça seu login</h1>
 

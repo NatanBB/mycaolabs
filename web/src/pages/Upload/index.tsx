@@ -11,6 +11,7 @@ import Dropzone from '../../components/Dropzone';
 export default function Upload() {
   const [animal, setAnimal] = useState<any>();
   const [img, setImg] = useState<any>();
+  const [locale, setLocale] = useState<any>();
   const [listAnimal, setListAnimal] = useState<any>();
 
   const id = Math.floor(Math.random() * 65536);
@@ -35,6 +36,7 @@ export default function Upload() {
       id: id,
       animal: animal?.label,
       idAnimal: animal?.value,
+      locale: locale,
       img: img,
     }
     api.post('upload', preparedData)
@@ -63,6 +65,13 @@ export default function Upload() {
             isClearable
             isSearchable
             className="selectOptions"
+            required
+          />
+          <input
+            placeholder="Localização"
+            value={locale}
+            onChange={e => setLocale(e.target.value)}
+            maxLength={30}
             required
           />
 

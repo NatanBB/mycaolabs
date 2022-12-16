@@ -63,5 +63,6 @@ export type UploadProps = {
   id: number;
   idAnimal: number;
   animal: string;
+  locale: string;
   img: any;
 }

@@ -13,6 +13,8 @@ export default function Vet() {
   const [crmvNumber, setCrmvNumber] = useState<any>();
   const [email, setEmail] = useState<any>();
   const [telephone, setTelephone] = useState<any>();
+  const [login, setLogin] = useState<any>();
+  const [password, setPassword] = useState<any>();
 
   const id = Math.floor(Math.random() * 65536);
 
@@ -62,14 +64,14 @@ export default function Vet() {
           />
           <input
             placeholder="Address"
-            value={cpf}
+            value={address}
             onChange={e => setAddress(e.target.value)}
             maxLength={30}
             required
           />
           <input
             placeholder="Nº CRMV"
-            value={cpf}
+            value={crmvNumber}
             onChange={e => setCrmvNumber(e.target.value)}
             maxLength={30}
             type={'number'}
@@ -77,16 +79,30 @@ export default function Vet() {
           />
           <input
             placeholder="Email"
-            value={cpf}
+            value={email}
             onChange={e => setEmail(e.target.value)}
             maxLength={30}
             required
           />
           <input
             placeholder="Telefone"
-            value={cpf}
+            value={telephone}
             type={'number'}
             onChange={e => setTelephone(e.target.value)}
+            maxLength={30}
+            required
+          />
+          <input
+            placeholder="Login"
+            value={login}
+            onChange={e => setLogin(e.target.value)}
+            maxLength={30}
+            required
+          />
+          <input
+            placeholder="Senha"
+            value={password}
+            onChange={e => setPassword(e.target.value)}
             maxLength={30}
             required
           />
